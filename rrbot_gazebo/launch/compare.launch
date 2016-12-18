@@ -1,0 +1,37 @@
+<launch>
+  <arg name="paused" default="false"/>
+  <arg name="use_sim_time" default="true"/>
+  <arg name="gui" default="true"/>
+  <arg name="headless" default="false"/>
+  <arg name="debug" default="false"/>
+
+  <include file="$(find gazebo_ros)/launch/empty_world.launch">
+    <arg name="world_name" value="$(find rrbot_gazebo)/worlds/rrbot.world"/>
+    <arg name="debug" value="$(arg debug)" />
+    <arg name="gui" value="$(arg gui)" />
+    <arg name="paused" value="$(arg paused)"/>
+    <arg name="use_sim_time" value="$(arg use_sim_time)"/>
+    <arg name="headless" value="$(arg headless)"/>
+  </include>
+
+  <!-- sim -->
+  <group ns="sim">
+    <param name="robot_description" command="$(find xacro)/xacro.py '$(find rrbot_description)/urdf/rrbot.xacro'"/>
+    <param name="tf_prefix" value="sim"/>
+    <include file="$(find rrbot_gazebo)/launch/rrbot.launch">
+      <arg name="description_prefix" value="/sim"/>
+    </include>
+  </group>
+
+  <!-- broken -->
+  <group ns="broken">
+    <param name="robot_description" command="$(find xacro)/xacro.py '$(find rrbot_description)/urdf/broken.xacro'" />
+    <param name="tf_prefix" value="broken"/>
+  </group>
+
+  <include file="$(find rrbot_control)/launch/compare_control.launch" />
+
+  <node pkg="tf" type="static_transform_publisher" name="camera_link_broadcaster"
+    args="2 0 -1 1.57079632679 0 0 sim/camera_link broken/world 100" />
+
+</launch>
