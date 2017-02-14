@@ -29,16 +29,16 @@
     <collision>
       <origin xyz="0 0 ${height1/2}" rpy="0 0 0"/>
       <geometry>
-	<box size="${width} ${width} ${height1}"/>
+	     <box size="${width} ${width} ${height1}"/>
       </geometry>
     </collision>
 
     <visual>
       <origin xyz="0 0 ${height1/2}" rpy="0 0 0"/>
       <geometry>
-	<box size="${width} ${width} ${height1}"/>
+	     <box size="${width} ${width} ${height1}"/>
       </geometry>
-      <material name="orange"/>
+      <material name="black"/>
     </visual>
 
     <inertial>
@@ -64,14 +64,14 @@
     <collision>
       <origin xyz="0 0 ${height2/2 - axel_offset}" rpy="0 0 0"/>
       <geometry>
-	<box size="${width} ${width} ${height2}"/>
+	     <box size="${width} ${width} ${height2}"/>
       </geometry>
     </collision>
 
     <visual>
       <origin xyz="0 0 ${height2/2 - axel_offset}" rpy="0 0 0"/>
       <geometry>
-	<box size="${width} ${width} ${height2}"/>
+	     <box size="${width} ${width} ${height2}"/>
       </geometry>
       <material name="black"/>
     </visual>
@@ -99,16 +99,16 @@
     <collision>
       <origin xyz="0 0 ${height3/2 - axel_offset}" rpy="0 0 0"/>
       <geometry>
-	<box size="${width} ${width} ${height3}"/>
+	     <box size="${width} ${width} ${height3}"/>
       </geometry>
     </collision>
 
     <visual>
       <origin xyz="0 0 ${height3/2 - axel_offset}" rpy="0 0 0"/>
       <geometry>
-	<box size="${width} ${width} ${height3}"/>
+	     <box size="${width} ${width} ${height3}"/>
       </geometry>
-      <material name="orange"/>
+      <material name="black"/>
     </visual>
 
     <inertial>
@@ -133,7 +133,7 @@
     <collision>
       <origin xyz="0 0 0" rpy="0 0 0"/>
       <geometry>
-	<box size="0.1 0.1 0.1"/>
+	     <box size="0.1 0.1 0.1"/>
       </geometry>
     </collision>
 
@@ -152,7 +152,7 @@
   </link>
 
   <joint name="camera_joint" type="fixed">
-    <origin xyz="0 2 1" rpy="0 0 ${-PI/2}"/>
+    <origin xyz="0 3 1.5" rpy="0 0 ${-PI/2}"/>
     <parent link="world"/>
     <child link="camera_link"/>
   </joint>
@@ -162,14 +162,14 @@
     <collision>
       <origin xyz="0 0 0" rpy="0 0 0"/>
       <geometry>
-	<box size="${camera_link} ${camera_link} ${camera_link}"/>
+	     <box size="${camera_link} ${camera_link} ${camera_link}"/>
       </geometry>
     </collision>
 
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0"/>
       <geometry>
-	<box size="${camera_link} ${camera_link} ${camera_link}"/>
+	     <box size="${camera_link} ${camera_link} ${camera_link}"/>
       </geometry>
       <material name="red"/>
     </visual>

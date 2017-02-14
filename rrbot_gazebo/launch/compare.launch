@@ -32,6 +32,6 @@
   <include file="$(find rrbot_control)/launch/compare_control.launch" />
 
   <node pkg="tf" type="static_transform_publisher" name="camera_link_broadcaster"
-    args="2 0 -1 1.57079632679 0 0 sim/camera_link broken/world 100" />
+    args="3 -0.066 -1.5 1.57079632679 0 0 sim/camera_link broken/world 100" />
 
 </launch>
