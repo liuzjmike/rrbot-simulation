@@ -16,7 +16,7 @@
 
   <!-- sim -->
   <group ns="sim">
-    <param name="robot_description" command="$(find xacro)/xacro.py '$(find rrbot_description)/urdf/rrbot.xacro'"/>
+    <param name="robot_description" command="$(find xacro)/xacro '$(find rrbot_description)/urdf/rrbot.xacro'"/>
     <param name="tf_prefix" value="sim"/>
     <include file="$(find rrbot_gazebo)/launch/rrbot.launch">
       <arg name="description_prefix" value="/sim"/>
@@ -25,7 +25,7 @@
 
   <!-- broken -->
   <group ns="broken">
-    <param name="robot_description" command="$(find xacro)/xacro.py '$(find rrbot_description)/urdf/broken.xacro'" />
+    <param name="robot_description" command="$(find xacro)/xacro '$(find rrbot_description)/urdf/broken.xacro'" />
     <param name="tf_prefix" value="broken"/>
   </group>
 
