@@ -1,21 +1,19 @@
 <launch>
 
-  <param name="robot_description" command="$(find xacro)/xacro.py '$(find rrbot_description)/urdf/rrbot.xacro'"/>
-
   <group ns="sim">
     <rosparam file="$(find rrbot_control)/config/rrbot_control.yaml" command="load"/>
     <node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false"
       output="screen" ns="rrbot" args="joint_state_controller joint1_position_controller joint2_position_controller"/>
     <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" ns="rrbot"
-    respawn="false" output="screen"/>
+      respawn="false" output="screen"/>
   </group>
 
   <group ns="broken">
     <rosparam file="$(find rrbot_control)/config/rrbot_control.yaml" command="load"/>
     <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" ns="rrbot"
-    respawn="false" output="screen"/>
+      respawn="true" output="screen"/>
   </group>
 
-  <node pkg="topic_tools" type="relay" name="joint_relay" args="/sim/rrbot/joint_states /broken/rrbot/joint_states"/>
+  <!-- node pkg="topic_tools" type="relay" name="joint_relay" args="/sim/rrbot/joint_states /broken/rrbot/joint_states"/ -->
 
 </launch>
